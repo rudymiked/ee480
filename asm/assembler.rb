@@ -10,8 +10,9 @@
 class Assembler 
 
   def initialize
-    @op_add = "0000" # "ADD" 
-    @op_sub = "0001" #"SUB"
+    @op_and = "0000" # "AND" 
+    @op_add = "0001" # "ADD" 
+    @op_sub = "0010" #"SUB"
   end
 
 
@@ -21,8 +22,9 @@ class Assembler
 
     file.each { |l|
       l = l.split
-
       case l[0]
+      when "and"
+        file_out.puts "#{@op_and} #{l[1]} #{l[2]}"
       when "add"
         file_out.puts "#{@op_add} #{l[1]} #{l[2]}"
       when "sub" 
