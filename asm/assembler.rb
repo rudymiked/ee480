@@ -1,5 +1,6 @@
-#!/usr/bin/env ruby 
+#!/usr/bin/env ruby  
 
+#
 # Assembler EE 480
 # Mike Rudy
 # Russel Brooks
@@ -11,9 +12,15 @@
 class Assembler 
 
   def initialize
-    @op_and = "0000" # "AND" 
-    @op_add = "0001" # "ADD" 
-    @op_sub = "0010" #"SUB"
+    @op_and = "0000"   # AND 
+    @op_add = "0001"   # ADD 
+    @op_sub = "0010"   # SUB
+    @op_jmp = "100000" # JUMP
+    @op_mov = "1001"   # MOVE
+    @op_in  = "101100" # IN
+    @op_out = "101101" # OUT
+    @op_bne = "01110"  # BNE
+    @op_beq = "01111"  # BEQ
   end
 
 
@@ -30,6 +37,17 @@ class Assembler
         file_out.puts "#{@op_add} #{l[1]} #{l[2]}"
       when "sub" 
         file_out.puts "#{@op_sub} #{l[1]} #{l[2]}"
+      when "jmp" 
+        file_out.puts "#{@op_jmp} #{l[1]} #{l[2]}"
+      when "mov" 
+        file_out.puts "#{@op_mov} #{l[1]} #{l[2]}"
+      when "in" 
+        file_out.puts "#{@op_in} #{l[1]}"
+      when "out" 
+        file_out.puts "#{@op_out} #{l[1]}"
+
+      when "\""
+        next
       end
 
     }
@@ -47,6 +65,6 @@ def run
   assemble.parse
 end
 
-#run script
+#Run Assembler
 run
 
