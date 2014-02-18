@@ -8,7 +8,6 @@
 #
 
 
-
 class Assembler 
 
   def initialize
@@ -41,6 +40,10 @@ class Assembler
         file_out.puts "#{@op_jmp} #{l[1]} #{l[2]}"
       when "mov" 
         file_out.puts "#{@op_mov} #{l[1]} #{l[2]}"
+      when "bne" 
+        file_out.puts "#{@op_bne} #{l[1]} #{l[2]}"
+      when "beq" 
+        file_out.puts "#{@op_beq} #{l[1]} #{l[2]}"
       when "in" 
         file_out.puts "#{@op_in} #{l[1]}"
       when "out" 
