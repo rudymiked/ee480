@@ -11,6 +11,8 @@
 class Assembler 
 
   def initialize
+    #Binary values for OpCodes
+
     @op_and = "0000"   # AND 
     @op_add = "0001"   # ADD 
     @op_sub = "0010"   # SUB
@@ -41,9 +43,9 @@ class Assembler
       when "mov" 
         file_out.puts "#{@op_mov} #{l[1]} #{l[2]}"
       when "bne" 
-        file_out.puts "#{@op_bne} #{l[1]} #{l[2]}"
+        file_out.puts "#{@op_bne} #{l[1]} #{l[2]} #{l[3]}"
       when "beq" 
-        file_out.puts "#{@op_beq} #{l[1]} #{l[2]}"
+        file_out.puts "#{@op_beq} #{l[1]} #{l[2]} #{l[3]}"
       when "in" 
         file_out.puts "#{@op_in} #{l[1]}"
       when "out" 
