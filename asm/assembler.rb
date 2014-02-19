@@ -51,7 +51,7 @@ class Assembler
       when "out" 
         file_out.puts "#{@op_out} #{l[1]}"
 
-      when "\""
+      when "\#"
         next
       end
 
