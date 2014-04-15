@@ -1,0 +1,14 @@
+//////////////////////////////////////////////////////////////////
+//
+// Michael Rudy & Russell Brooks
+// University of Kentucky
+// EE 480 Spring 2014
+//
+// Module: RAM.v
+// Dependencies: N/A
+//
+// Description: Parameterized random access memory implemented using registers
+//
+// Last Modified: Russell - 4/14/2014
+//
+//////////////////////////////////////////////////////////////////
