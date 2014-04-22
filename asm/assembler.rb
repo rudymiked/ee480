@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby  
 
 #
-# Assembler EE 480
+# Assembler EE480
 # Mike Rudy
 # Russel Brooks
 # Spring 2014 
@@ -22,6 +22,8 @@ class Assembler
     @op_out = "101101" # OUT
     @op_bne = "01110"  # BNE
     @op_beq = "01111"  # BEQ
+    @op_asr = "10000"  # ASR
+    @op_asl = "10001"  #LSR
   end
 
 
@@ -50,7 +52,10 @@ class Assembler
         file_out.puts "#{@op_in} #{l[1]}"
       when "out" 
         file_out.puts "#{@op_out} #{l[1]}"
-
+      when "asr"
+        file_out.puts "#{@op_asr} #{l[1]}"
+      when "asl"
+        file_out.puts "#{@op_asl} #{l[1]}"
       when "\#"
         next
       end
