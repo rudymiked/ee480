@@ -13,19 +13,27 @@ class Assembler
   def initialize
     #Binary values for OpCodes
 
-    @op_and = "0000"   # AND 
-    @op_add = "0001"   # ADD 
-    @op_sub = "0010"   # SUB
-    @op_jmp = "100000" # JUMP
-    @op_mov = "1001"   # MOVE
-    @op_in  = "101100" # IN
-    @op_out = "101101" # OUT
-    @op_bne = "01110"  # BNE
-    @op_beq = "01111"  # BEQ
-    @op_asr = "10000"  # ASR
-    @op_asl = "10001"  #LSR
-  end
+    @op_add = "000000"  # ADD 
+    @op_sub = "000001"  # SUB 
+    @op_or  = "000010"  # OR 
+    @op_and = "000011"  # AND
+    @op_not = "000100"  # NOT
+    @op_mul = "000101"  # MULT
+    @op_div = "000110"  # DIV
+    @op_asr = "000111"  # ASR
+    @op_asl = "001000"  # LSR
+    @op_bra = "001001"  # CONDITIONAL BRANCH
+    @op_jmp = "001010"  # JUMP
+    @op_jsr = "001011"  # JUMP TO SUB
+    @op_rts = "001100"  # RETURN FROM SUB
+    @op_isr = "001101"  # RETURN FROM INTERRUPT
+    @op_ld  = "001110"  # LOAD TO RAM
+    @op_st  = "001111"  # STORE TO RAM
+    @op_in  = "010000"  # INPUT WORD TO RAM
+    @op_asl = "010001"  # OUTPUT WORD FROM RAM
+    @op_msk = "010010"  # HVPI
 
+  end
 
   def parse
     file = File.open("test", "r")
