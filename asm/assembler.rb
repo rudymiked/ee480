@@ -1,11 +1,18 @@
 #!/usr/bin/env ruby  
-
-#
-# Assembler EE480
-# Mike Rudy
-# Russel Brooks
-# Spring 2014 
-#
+##################################################################
+##
+## Michael Rudy & Russell Brooks
+## University of Kentucky
+## EE 480 Spring 2014
+##
+## Module: assembler.rb
+## Dependencies: N/A
+##
+## Description: Compiles assembly code into machine code (binary)
+##
+## Last Modified: Michael - 4/24/2014
+##
+##################################################################
 
 
 class Assembler 
@@ -35,7 +42,7 @@ class Assembler
 
   end
 
-  def parse
+  def parse_print
     file = File.open("test", "r")
     file_out = File.open("out", "w")
 
@@ -43,48 +50,52 @@ class Assembler
       l = l.split
 
       value = l[1].to_i
-      bin_value = value.to_s(2)
-      hex_value = value.to_s(16)
+      
+      #convert to 4-bit Biary
+      bin_value = value.to_s(2).rjust(10,"0")
+
+      #convert to 4-bit Hexidecmial
+      hex_value = value.to_s(16).rjust(10,"0")
 
       case l[0]
       when "add"
-        file_out.puts "#{@op_add} #{bin_value}"
+        file_out.puts "#{@op_add}#{bin_value}"
       when "sub"
-        file_out.puts "#{@op_sub} #{bin_value}"
+        file_out.puts "#{@op_sub}#{bin_value}"
       when "or"
-        file_out.puts "#{@op_or} #{bin_value}"
+        file_out.puts "#{@op_or}#{bin_value}"
       when "and"
-        file_out.puts "#{@op_and} #{bin_value}" #{l[2]}"
+        file_out.puts "#{@op_and}#{bin_value}" 
       when "not" 
-        file_out.puts "#{@op_not} #{bin_value}"
+        file_out.puts "#{@op_not}#{bin_value}"
       when "mult" 
-        file_out.puts "#{@op_mul} #{bin_value}"
+        file_out.puts "#{@op_mul}#{bin_value}"
       when "div" 
-        file_out.puts "#{@op_div} #{bin_value}"
+        file_out.puts "#{@op_div}#{bin_value}"
       when "asr" 
-        file_out.puts "#{@op_asr} #{bin_value}"
+        file_out.puts "#{@op_asr}#{bin_value}"
       when "asl" 
-        file_out.puts "#{@op_asl} #{bin_value}"
+        file_out.puts "#{@op_asl}#{bin_value}"
       when "bra" 
-        file_out.puts "#{@op_bra} #{bin_value}"
+        file_out.puts "#{@op_bra}#{bin_value}"
       when "jmp" 
-        file_out.puts "#{@op_jmp}"
+        file_out.puts "#{@op_jmp}#{bin_value}"
       when "jsr" 
-        file_out.puts "#{@op_jsr} #{bin_value}"
+        file_out.puts "#{@op_jsr}#{bin_value}"
       when "rts" 
-        file_out.puts "#{@op_rts}"
+        file_out.puts "#{@op_rts}#{bin_value}"
       when "isr"
-        file_out.puts "#{@op_isr} #{bin_value}"
+        file_out.puts "#{@op_isr}#{bin_value}"
       when "ld" 
-        file_out.puts "#{@op_ld} #{bin_value}"
+        file_out.puts "#{@op_ld}#{bin_value}"
       when "st" 
-        file_out.puts "#{@op_st} #{bin_value}"
+        file_out.puts "#{@op_st}#{bin_value}"
       when "in" 
-        file_out.puts "#{@op_in} #{hex_value}"
+        file_out.puts "#{@op_in}#{bin_value}"
       when "out" 
-        file_out.puts "#{@op_out} #{hex_value}"
+        file_out.puts "#{@op_out}#{bin_value}"
       when "msk"
-        file_out.puts "#{@op_msk} #{bin_value}"
+        file_out.puts "#{@op_msk}#{bin_value}"
       when "\#"
         next
       end
@@ -100,8 +111,7 @@ end
 
 def run 
   assemble = Assembler.new
-
-  assemble.parse
+  assemble.parse_print
 end
 
 #Run Assembler
