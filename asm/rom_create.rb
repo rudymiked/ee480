@@ -21,13 +21,15 @@ class RomCreate
     @file_name 
     @header # header
     @module # module declaration and variables
-    @memory # machine code data 
+    @memory = Hash.new # machine code data 
   end
 
   def parse
-    machine = File.open("test", "r")
+    test = File.open("test", "r")
     i = 0;
-    machine.each_line { |l|
+    
+    #get file name
+    test.each_line { |l|
     break if (i==1)
     
     l = l.split
@@ -54,6 +56,19 @@ class RomCreate
 //
 //////////////////////////////////////////////////////////////////
     eos
+
+    machine = File.open("out", "r")
+   
+      j = 0
+      machine.each_line { |l|
+     
+      @memory[j] = l 
+  
+      j += 1
+    } 
+
+   test.close
+   machine.close
 
   end
 
@@ -112,7 +127,25 @@ module #{@file_name}(ce, reg_in, addr, rw, clk, clr, reg_out);
 
     eos
 
+    @memory = @memory.sort
+
+    memory = <<-eos
+  initial
+  begin
+    eos
+   
+    mem_blk = ""
+
+    @memory.each { |k,v|
+      mem_blk = mem_blk + "    mem[#{k}] = #{v}" 
+    }
+   memory = memory + mem_blk +  <<-eos
+  end
+
+    eos
+
     rom_file.puts @module
+    rom_file.puts memory
     rom_file.puts clr_blk
     rom_file.puts read_write
     rom_file.puts "endmodule" 

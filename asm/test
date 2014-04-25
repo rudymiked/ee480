@@ -1,6 +1,9 @@
-add 1
+# straight
+ld 3
+add 5
+st 4 
 sub 4
-and 0
+and 7
 or 0
 in 14
 out 12
@@ -11,7 +14,7 @@ asr 3
 ld 1
 st 5
 msk 1
-jmp
+jmp 0 
 bra 1
 #COMMENT
-rts 
+rts 4
