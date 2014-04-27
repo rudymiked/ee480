@@ -1,6 +1,20 @@
-add 1 2
-sub 3 2
-and 0 1
-or 0 1
-in 1
-out 0
+# straight
+ld 3
+add 5
+st 4 
+sub 4
+and 7
+or 0
+in 14
+out 12
+mult 5
+div 7
+asl 2
+asr 3
+ld 1
+st 5
+msk 1
+jmp 0 
+bra 1
+#COMMENT
+rts 4
