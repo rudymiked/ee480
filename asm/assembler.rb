@@ -43,7 +43,7 @@ class Assembler
   end
 
   def parse_print
-    file = File.open("test", "r")
+    file = File.open(ARGV[0], "r")
     file_out = File.open("out", "w")
 
     file.each { |l|
