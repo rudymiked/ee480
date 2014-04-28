@@ -25,19 +25,19 @@ class RomCreate
   end
 
   def parse
-    test = File.open("test", "r")
+    test = File.open(ARGV[0], "r")
     i = 0;
     
     #get file name
     test.each_line { |l|
-    break if (i==1)
+      break if (i==1)
     
-    l = l.split
+      l = l.split
     
-    name = l[1] if (l[0] =~ /#/)
+      name = l[1] if (l[0] =~ /#/)
 
-    @file_name = "ROM_#{name}";
-    i = 1
+      @file_name = "ROM_#{name}";
+      i = 1
 
     }
     @header = <<-eos
@@ -81,7 +81,7 @@ class RomCreate
     @module = <<-eos
 module #{@file_name}(ce, reg_in, addr, rw, clk, clr, reg_out);
 
-  parameter addr_width = 8, data_width = 8;
+  parameter addr_width = 8, data_width = 16;
   input rw, clr, clk, ce;
   input [(data_width-1):0] reg_in;
   input [(addr_width-1):0] addr;
@@ -136,9 +136,10 @@ module #{@file_name}(ce, reg_in, addr, rw, clk, clr, reg_out);
    
     mem_blk = ""
 
-    @memory.each { |k,v|
-      mem_blk = mem_blk + "    mem[#{k}] = #{v}" 
-    }
+      @memory.each { |k,v|
+        mem_blk = mem_blk + "    mem[#{k}] = #{v}" 
+      }
+
    memory = memory + mem_blk +  <<-eos
   end
 

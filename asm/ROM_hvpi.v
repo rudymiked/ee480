@@ -4,15 +4,15 @@
 // University of Kentucky
 // EE 480 Spring 2014
 //
-// Module: ROM_straight.v 
+// Module: ROM_hvpi.v 
 // Dependencies: N/A
 //
-// Description: initial RAM module for ROM_straight program
+// Description: initial RAM module for ROM_hvpi program
 //
 // Last Modified: Michael - 4/24/2014
 //
 //////////////////////////////////////////////////////////////////
-module ROM_straight(ce, reg_in, addr, rw, clk, clr, reg_out);
+module ROM_hvpi(ce, reg_in, addr, rw, clk, clr, reg_out);
 
   parameter addr_width = 8, data_width = 16;
   input rw, clr, clk, ce;

@@ -10,7 +10,7 @@
 ##
 ## Description: Compiles assembly code into machine code (binary)
 ##
-## Last Modified: Michael - 4/24/2014
+## Last Modified: Mike - 4/28/2014
 ##
 ##################################################################
 
@@ -44,7 +44,11 @@ class Assembler
 
   def parse_print
     file = File.open(ARGV[0], "r")
-    file_out = File.open("out", "w")
+
+    name = ARGV[0].split("_")
+    name = name[1] 
+    
+    file_out = File.new("out_#{name}", "w")
 
     file.each { |l|
       l = l.split
