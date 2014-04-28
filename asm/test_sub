@@ -1,6 +1,6 @@
 # sub 
 ld 3
-JSR "s1 location"
+jsr s1
 st 0
 
 s1
@@ -12,6 +12,7 @@ jsr s2
 rts
 
 s2
+
 sub 1
 asl 2
 rts

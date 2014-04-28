@@ -8,5 +8,6 @@ mult 4
 div 2
 asl 3
 asr 2
+sub 2
 st 0
 #COMMENT

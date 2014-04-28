@@ -35,7 +35,12 @@ module ROM_straight(ce, reg_in, addr, rw, clk, clr, reg_out);
     mem[6] = 0001100000000010
     mem[7] = 0010000000000011
     mem[8] = 0001110000000010
-    mem[9] = 0011110000000000
+    mem[9] = 0000010000000010
+    mem[10] = 0011110000000000
+
+    for(i = 11; i < 255; i = i + 1)
+      mem[i] = 0;
+
   end
 
   always@(posedge clk)

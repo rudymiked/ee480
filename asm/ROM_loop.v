@@ -4,15 +4,15 @@
 // University of Kentucky
 // EE 480 Spring 2014
 //
-// Module: ROM_sub.v 
+// Module: ROM_loop.v 
 // Dependencies: N/A
 //
-// Description: initial RAM module for ROM_sub program
+// Description: initial RAM module for ROM_loop program
 //
 // Last Modified: Michael - 4/24/2014
 //
 //////////////////////////////////////////////////////////////////
-module ROM_sub(ce, reg_in, addr, rw, clk, clr, reg_out);
+module ROM_loop(ce, reg_in, addr, rw, clk, clr, reg_out);
 
   parameter addr_width = 8, data_width = 16;
   input rw, clr, clk, ce;
@@ -26,18 +26,14 @@ module ROM_sub(ce, reg_in, addr, rw, clk, clr, reg_out);
 
   initial
   begin
-    mem[0] = 0011100000000011
-    mem[1] = 0011110000000000
-    mem[2] = 0001010000000010
+    mem[0] = 0011100000000100
+    mem[1] = 0000010000000101
+    mem[2] = 0010010000001000
     mem[3] = 0000010000000001
-    mem[4] = 0001110000000010
-    mem[5] = 0010110000000000
-    mem[6] = 0011000000000000
-    mem[7] = 0000010000000001
-    mem[8] = 0010000000000010
-    mem[9] = 0011000000000000
+    mem[4] = 0010100000000000
+    mem[5] = 0011110000000000
 
-    for(i = 10; i < 255; i = i + 1)
+    for(i = 6; i < 255; i = i + 1)
       mem[i] = 0;
 
   end

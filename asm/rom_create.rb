@@ -19,6 +19,7 @@ class RomCreate
   
   def initialize
     @file_name 
+    @out_file_name
     @header # header
     @module # module declaration and variables
     @memory = Hash.new # machine code data 
@@ -37,6 +38,7 @@ class RomCreate
       name = l[1] if (l[0] =~ /#/)
 
       @file_name = "ROM_#{name}";
+      @out_file_name = "out_#{name}";
       i = 1
 
     }
@@ -57,7 +59,7 @@ class RomCreate
 //////////////////////////////////////////////////////////////////
     eos
 
-    machine = File.open("out", "r")
+    machine = File.open(@out_file_name, "r")
    
       j = 0
       machine.each_line { |l|
@@ -141,6 +143,10 @@ module #{@file_name}(ce, reg_in, addr, rw, clk, clr, reg_out);
       }
 
    memory = memory + mem_blk +  <<-eos
+
+    for(i = #{@memory.length}; i < 255; i = i + 1)
+      mem[i] = 0;
+
   end
 
     eos
