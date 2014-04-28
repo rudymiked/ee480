@@ -1,0 +1,19 @@
+# sub 
+ld 3
+JSR "s1 location"
+st 0
+
+s1
+
+mult 2
+sub 1
+asr 2
+jsr s2
+rts
+
+s2
+sub 1
+asl 2
+rts
+
+#COMMENT

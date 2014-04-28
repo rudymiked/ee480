@@ -1,0 +1,7 @@
+# hvpi 
+ld 1
+add 4
+# illegal operation: fail  - should promote interrupt system
+fail 3
+st 0
+#COMMENT

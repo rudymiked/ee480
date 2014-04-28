@@ -1,0 +1,12 @@
+# straight
+ld 3
+add 5
+sub 4
+or 1
+and 2
+mult 4
+div 2
+asl 3
+asr 2
+st 0
+#COMMENT
