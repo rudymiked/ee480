@@ -8,41 +8,35 @@
 // Module: prog_ctr_n_bit.v
 // Dependencies: N/A
 //
-// Description: Parameterized program counter
+// Description: Parameterized program counter with synchronous low clear:
+//					ctrl	funct
+//					00		store
+//					01		load input
+//					10		increment by 1
+//					11		increment by input
 //
-// Last Modified: Russell - 4/14/2014
+// Last Modified: Russell - 4/28/2014
 //
 //////////////////////////////////////////////////////////////////
 
-module prog_ctr_n_bit(clr, clk, pc_c, pc_i, pc_o);
-
-  parameter n=4;
-  parameter inc=2;
+module prog_ctr_n_bit(pc_in, pc_ctrl, clr, clk, pc_out);
+  parameter d_width=4;
   
-  input [n-1:0]pc_i;
-  input clr,clk;
-  input [1:0]pc_c;
-  output [n-1:0]pc_o;
-  reg [n-1:0]pc_o;
-  integer i;
+  input [d_width - 1 : 0] pc_in;
+  input [1 : 0] pc_ctrl;
+  input clr, clk;
+  output reg [d_width - 1 : 0] pc_out;
   
   always @(posedge clk)
   begin
-    if (clr==1'b0)
-	 begin
-	   for (i=0;i<n;i=i+1)
-	   begin
-		  pc_o[i]=1'b0;
-		end
-	 end
-    else
-	 begin
-	   case(pc_c)
-		  0 : pc_o=pc_o;
-        1 : pc_o=pc_i;
-		  2 : pc_o=pc_o+1;
-		  3 : pc_o=pc_i+inc;
-		  default : pc_o=pc_o;
+    if (clr == 1'b0) pc_out <= 1'b0;
+    else begin
+	   case(pc_ctrl)
+		  0 : pc_out <= pc_out;
+        1 : pc_out <= pc_in;
+		  2 : pc_out <= pc_out + 1;
+		  3 : pc_out <= pc_out + pc_in;
+		  default : pc_out = pc_out;
 		endcase
     end
   end	 
