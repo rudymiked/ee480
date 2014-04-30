@@ -81,7 +81,7 @@ class RomCreate
     
 
     @module = <<-eos
-module #{@file_name}(ce, reg_in, addr, rw, clk, clr, reg_out);
+module #{@file_name}(reg_in, clk, addr, ce, clr, rw, reg_out);
 
   parameter addr_width = 8, data_width = 16;
   input rw, clr, clk, ce;
@@ -139,7 +139,8 @@ module #{@file_name}(ce, reg_in, addr, rw, clk, clr, reg_out);
     mem_blk = ""
 
       @memory.each { |k,v|
-        mem_blk = mem_blk + "    mem[#{k}] = #{v}" 
+        v = v.chomp
+        mem_blk = mem_blk + "    mem[#{k}] = 16'b#{v};\n" 
       }
 
    memory = memory + mem_blk +  <<-eos

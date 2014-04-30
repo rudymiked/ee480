@@ -12,7 +12,7 @@
 // Last Modified: Michael - 4/24/2014
 //
 //////////////////////////////////////////////////////////////////
-module ROM_loop(ce, reg_in, addr, rw, clk, clr, reg_out);
+module ROM_loop(reg_in, clk, addr, ce, clr, rw, reg_out);
 
   parameter addr_width = 8, data_width = 16;
   input rw, clr, clk, ce;
@@ -26,12 +26,12 @@ module ROM_loop(ce, reg_in, addr, rw, clk, clr, reg_out);
 
   initial
   begin
-    mem[0] = 0011100000000100
-    mem[1] = 0000010000000101
-    mem[2] = 0010010000001000
-    mem[3] = 0000010000000001
-    mem[4] = 0010100000000000
-    mem[5] = 0011110000000000
+    mem[0] = 16'b0011100000000100;
+    mem[1] = 16'b0000010000000101;
+    mem[2] = 16'b0010010000001000;
+    mem[3] = 16'b0000010000000001;
+    mem[4] = 16'b0010100000000000;
+    mem[5] = 16'b0011110000000000;
 
     for(i = 6; i < 255; i = i + 1)
       mem[i] = 0;

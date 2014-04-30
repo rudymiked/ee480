@@ -12,7 +12,7 @@
 // Last Modified: Michael - 4/24/2014
 //
 //////////////////////////////////////////////////////////////////
-module ROM_hvpi(ce, reg_in, addr, rw, clk, clr, reg_out);
+module ROM_hvpi(reg_in, clk, addr, ce, clr, rw, reg_out);
 
   parameter addr_width = 8, data_width = 16;
   input rw, clr, clk, ce;
@@ -26,9 +26,9 @@ module ROM_hvpi(ce, reg_in, addr, rw, clk, clr, reg_out);
 
   initial
   begin
-    mem[0] = 0011100000000001
-    mem[1] = 0000000000000100
-    mem[2] = 0011110000000000
+    mem[0] = 16'b0011100000000001;
+    mem[1] = 16'b0000000000000100;
+    mem[2] = 16'b0011110000000000;
 
     for(i = 3; i < 255; i = i + 1)
       mem[i] = 0;
