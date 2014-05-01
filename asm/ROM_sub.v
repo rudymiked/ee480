@@ -37,7 +37,7 @@ module ROM_sub(reg_in, clk, addr, ce, clr, rw, reg_out);
     mem[8] = 16'b0010000000000010;
     mem[9] = 16'b0011000000000000;
 
-    for(i = 10; i < 255; i = i + 1)
+    for(i = 10; i < 256; i = i + 1)
       mem[i] = 0;
 
   end

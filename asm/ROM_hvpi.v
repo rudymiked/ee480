@@ -30,7 +30,7 @@ module ROM_hvpi(reg_in, clk, addr, ce, clr, rw, reg_out);
     mem[1] = 16'b0000000000000100;
     mem[2] = 16'b0011110000000000;
 
-    for(i = 3; i < 255; i = i + 1)
+    for(i = 3; i < 256; i = i + 1)
       mem[i] = 0;
 
   end

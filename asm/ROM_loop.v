@@ -33,7 +33,7 @@ module ROM_loop(reg_in, clk, addr, ce, clr, rw, reg_out);
     mem[4] = 16'b0010100000000000;
     mem[5] = 16'b0011110000000000;
 
-    for(i = 6; i < 255; i = i + 1)
+    for(i = 6; i < 256; i = i + 1)
       mem[i] = 0;
 
   end

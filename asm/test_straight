@@ -4,10 +4,10 @@ add 5
 sub 4
 or 1
 and 2
-mult 4
+mult 7
 div 2
-asl 3
-asr 2
+asl 1
+asr 1
 sub 2
 st 0
 #COMMENT

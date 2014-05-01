@@ -145,7 +145,7 @@ module #{@file_name}(reg_in, clk, addr, ce, clr, rw, reg_out);
 
    memory = memory + mem_blk +  <<-eos
 
-    for(i = #{@memory.length}; i < 255; i = i + 1)
+    for(i = #{@memory.length}; i < 256; i = i + 1)
       mem[i] = 0;
 
   end
