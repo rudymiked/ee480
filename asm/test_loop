@@ -1,8 +1,9 @@
 # loop 
-ld 4
-sub 5
-bra 8
+ld 6
+sub 4
+add 2
+asr 1
+jmp 8
 sub 1
-jmp "back to bra"
 st 0
 #COMMENT
